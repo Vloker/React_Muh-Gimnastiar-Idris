@@ -1,3 +1,3 @@
 Memahami Version Control
 Penjelasan Branch
-Memahami Penjelasan mengenai flowgithub
+Memahami Penjelasan mengenai flowgithubs

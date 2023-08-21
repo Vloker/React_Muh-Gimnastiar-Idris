@@ -1,3 +1,4 @@
+link google doc https://docs.google.com/document/d/1RoIeyyNTGmsTU0f5Rs0jhoTng5BTRippGw4SJbjqQvo/edit?usp=sharing
 1. Perkenalan antara Peserta dan Mentor
 2. Penjelasan Basic Front End
 3. Pengenalan Dasar React javascript

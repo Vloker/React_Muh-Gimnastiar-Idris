@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.navbar .container-fluid{
+    background-color:black;
+}
+.navbar-nav a{
+    color: blanchedalmond;
+    font-size: 18px;
+    font-weight: 400;
+}
+.navbar-nav a:hover{
+    color: white;
+}
+.row{
+    background-size: cover;
+    height: 1200px;
+}
+.color-overlay{
+    color: white;
+    background-color: rgba(46, 46, 46, 0.5);
+    height: 1200px;
+}
+.color-overlay button{
+    border-radius: 10px;
+    color: white;
+    padding: 9px 50px;
+    border-color: white;
+    background-color: black;
+}
+
+.footer .container-fluid{
+    background-color: black;
+}
+.footer .row{
+    max-height: 400px;
+    color: white;
+}
+
+.sosial-media p{
+    display: inline-block;
+    font-size: 20px;
+}
+
+.Address p{
+    display: inline-block;
+    font-size: 20px;
+}
+
+
+/* CONTAC US */
+.contac{
+    min-height: 100vh;
+    padding: 50px 100px;
+    background-image: url(/codeCompetance1/project/lucas-hoang-Dl82-cM2w0k-unsplash.jpg);
+    background-size: cover;
+    flex-direction: column;
+}
+.contac .conten{
+    max-width: 800px;
+    text-align: center;
+    color: red;
+}
+.contac .conten h1{
+    font-weight: 600;
+}
+.contac .conten p{
+    font-weight: 300;
+}
+
+/* Address */
+.container{
+    width: 100%;
+    margin-top: 50px;
+}
+.contacInfo{
+    display: flex;
+    flex-direction: column;
+    padding: 2.8px 10px;
+    background: white;
+    border-radius: 10px;
+    color: black;
+}
+.box{
+    position: relative;
+    padding: 20px 0px;
+    display: flex;
+}
+.box .icon{
+    min-width: 60px;
+    height: 60px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+}
+.box .text{
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    flex-direction: column;
+}
+.box .text h3{
+   font-weight: 500;
+}
+
+/* Form */
+.contacForm{
+    width: 40%;
+    padding: 50px;
+    background: white;
+    border-radius: 10px;
+    color: black;
+}
+
+.contacForm .username input, .contacForm .email input{
+    padding: 5px 0px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+.contacForm .username{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.contacForm .email{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+}
+.contacForm .message{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+}
+.contacForm .inputBox{
+    text-align: center;
+    margin-top: 10px;
+}
+.contacForm .inputBox input{
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+.contacForm textarea{
+    width: 100%;
+    outline: none;
+    resize: none;
+}
+.form .username_failed,
+.form .email_failed{
+    color: red;
+    display: none;
+}

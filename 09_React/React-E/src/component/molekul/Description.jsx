@@ -1,11 +1,10 @@
 import Label from "../atom/Label";
-import Textarea from "../atom/Textarea";
 
-const Description = ({name,title,className}) => {
+const Description = ({name,title,className, onChange}) => {
     return (   
         <div className="d-flex flex-column mt-4">
             <Label htmlFor={name} title={title}/>
-            <Textarea className={className} name={name} id={name}/>
+            <textarea className={className} name={name} id={name} onChange={onChange} rows="9"></textarea>
         </div>
     )
 }

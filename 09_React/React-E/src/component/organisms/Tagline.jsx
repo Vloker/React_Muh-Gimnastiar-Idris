@@ -1,6 +1,5 @@
-import Button from "../atom/Button"
+import Button from '../atom/Button'
 import React, { useState } from "react"
-
 
 const Tagline = () => {
   const article = {

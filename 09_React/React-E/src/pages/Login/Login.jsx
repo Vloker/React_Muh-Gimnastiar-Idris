@@ -61,7 +61,6 @@ const Login = () => {
             <button className="btn btn-primary justify-content-center d-flex align-items-center mb-2" type="submit">Login</button>
 
             <button className="btn btn-primary justify-content-center d-flex align-items-center" onClick={handleKey} type="button">Back to Created</button>
-
         
             <p>Don't have an account ? <a href="/Register">Register</a></p>
         </form>

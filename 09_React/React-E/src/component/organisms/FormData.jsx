@@ -10,61 +10,48 @@ import Button from '../atom/Button'
 import Productfreshness from '../molekul/Productfreshness'
 import Imagefile from '../molekul/Imagefile'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { updateFormValue } from '../../Redux/Slices/ListProduct'
+
 
 const FormData = () => {
-  const dataValues = {
-    productname: '',
-    productcategory: '',
-    imageproduct: '',
-    productprice: '',
-    productdescription: '',
-    productfreshness: ''
-  }
 
-  const [formValues, setFormValues] = useState(dataValues);
+  const dispatch = useDispatch();
+  const formValues = useSelector((state) => state.list.formValues);
+
   const [formError, setFormError] = useState({}); 
-  const [tableData, setTableData] = useState([]);
+  const [tableData, setTableData] = useState(JSON.parse(localStorage.getItem('tableData')) || []);
 
   // Value pada Form
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-      setFormValues({
-      ...formValues,
-      [name]: value
-    })
-  }
-
-  // Pengambinan Data pada Local Storage
-  useEffect(() => {
-    alert('Welcome');
-    const storedTableData = localStorage.getItem('tableData');
-    if (storedTableData) {
-        setTableData(JSON.parse(storedTableData));
+    const { name, value } = e.target
+    dispatch(updateFormValue({name, value}));
     }
-  },[])
 
   // Penambahan Data pada tabel dan Local Storage
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const errors = validasi(formValues);
     setFormError(errors)
     
     if(Object.keys(errors).length === 0){
       const newItem = {id: uuidv4(),...formValues};
+      
       setTableData([...tableData, newItem]);
-      setFormValues(dataValues);
+      dispatch(updateFormValue({name: '', value: ''}));
 
       localStorage.setItem('tableData', JSON.stringify([...tableData, newItem]));
     }
   }
 
-// Penghapusan Data dari Local Storage
+  // Penghapusan Data dari Local Storage
   const removeItemFromLocalStorage = (id) => {
     const storedTableData = JSON.parse(localStorage.getItem('tableData'));
     const updatedTableData = storedTableData.filter((item) => item.id !== id);
     localStorage.setItem('tableData', JSON.stringify(updatedTableData));
 };
+
 
 // Penghapusan Data Perbaris
   const handleDeleteItem = (id) => {
@@ -90,7 +77,7 @@ const FormData = () => {
     if(!values.productname){
       error.productname = 'Product Name is required'
     }else if (!regexProductName.test(values.productname)){
-      error.productname = 'Product Name must be at least 3 characters'
+      error.productname = 'Product Name must be at least 3 characters and no more than 25 characters and no special characters'
     }
     if(!values.productcategory){
       error.productcategory = 'Product Category is required'

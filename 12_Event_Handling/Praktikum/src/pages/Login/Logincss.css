@@ -1,0 +1,81 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Login{
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 50px 100px;
+    background: #1F41A9;
+    position: relative;
+}
+.elips{
+    width: 775.131px;
+    height: 775.131px;
+    transform: translateX(-90%);
+    border-radius: 775.131px;
+    background: #264ECA;
+    position: absolute;
+    top: -70%;
+}
+.elips2{
+    width: 468.933px;
+    height: 468.933px;
+    transform: translateX(-100%);
+    border-radius: 775.131px;
+    background: #264ECA;
+    position: absolute;
+    right: 45%;
+    bottom: -40%;
+}
+.elips3{
+    width: 775.131px;
+    height: 775.131px;
+    transform: translateZ(-70%);
+    border-radius: 775.131px;
+    background: #264ECA;
+    position: absolute;
+    left: 70%;
+    bottom: -70%;
+} */
+
+/* Form Login */
+/* .container{
+    width: 354px;
+    height: 400px;
+    gap: 20px;
+}
+
+.email Input{
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background: none;
+    outline: 1px solid white;
+    height: 10%;
+    padding : 8px 10px
+}
+.password Input{
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background: none;
+    outline: 1px solid white;
+    height: 10%;
+    padding : 8px 10px
+}
+
+form .btn{
+    width: 100%;
+    height: 20%;
+    color: #36981D;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid #36981D;
+    background: rgba(255, 255, 255, 0.00);
+}
+
+p{
+    color: white;
+} */

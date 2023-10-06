@@ -12,6 +12,7 @@ const FormData = () => {
   const insialValues = {
     productname: ''
   }
+  
   const [formValues, setformValues] = useState(insialValues);
   const [formError, setformError] = useState({});
   const [isSubmit, setisSubmit] = useState(false);

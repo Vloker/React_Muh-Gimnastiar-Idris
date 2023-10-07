@@ -5,9 +5,7 @@ import { Navbar } from 'flowbite-react';
 const AtomNavbar = () => {
     return (
      <Navbar fluid rounded className='mx-4 rounded-lg'>
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite React
-            </span>
+            <img className="self-center whitespace-nowrap w-10 h-10" src="/images/Subtract.svg" />
 
       <Navbar.Collapse>
         <Navbar.Link href="#">Home</Navbar.Link>

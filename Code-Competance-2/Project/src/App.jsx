@@ -17,17 +17,22 @@ function App() {
     
     {/* Background Welcome */}
       <div className="h-screen  mt-2 flex justify-center items-center bg-[url(/images/lucas-hoang-Dl82-cM2w0k-unsplash.jpg)]">
-            <h1 className="text-white">Welcome to Roadmap</h1>
+            <h1 className="text-white font-bold text-4xl">Welcome to Roadmap</h1>
       </div>
 
     {/* Slides */}
-      <div className=" h-56 sm:h-64 xl:h-80 2xl:h-96 mt-4 flex justify-center">
+      <div className=" mt-4 flex justify-center">
         <ImageSlides />
       </div>
 
+    {/* About */}
+        <AboutUS />
+
     {/* Contact */}
         <ContacUS />
+
     </section>
+
 
     </>
   )

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import Productname from '../molekul/Productname'
 import Productcategory from '../molekul/Productcategory'
 import NumberRandom from '../molekul/NumberRandom'
@@ -9,6 +8,7 @@ import Table from '../molekul/Table'
 import Button from '../atom/Button'
 import Productfreshness from '../molekul/Productfreshness'
 import Imagefile from '../molekul/Imagefile'
+import axios from 'axios'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { updateFormValue } from '../../Redux/Slices/ListProduct'
@@ -20,7 +20,11 @@ const FormData = () => {
   const formValues = useSelector((state) => state.list.formValues);
 
   const [formError, setFormError] = useState({}); 
-  const [tableData, setTableData] = useState(JSON.parse(localStorage.getItem('tableData')) || []);
+  const [tableData, setTableData] = useState([]);
+
+  useEffect (() => {
+    getItems();
+  }, [])
 
   // Value pada Form
   const handleChange = (e) => {
@@ -28,45 +32,61 @@ const FormData = () => {
     dispatch(updateFormValue({name, value}));
     }
 
-  // Penambahan Data pada tabel dan Local Storage
-  const handleSubmit = (e) => {
+  // Ambil Data dari MockApi dan menampilkan ke Table
+  const getItems = async () => {
+      try{
+          const response = await axios.get('https://651ba6f4194f77f2a5aea95f.mockapi.io/Product');
+          setTableData(response.data);
+          dispatch(updateFormValue({name: '', value: ''}));
+      }catch(error){
+          console.log(error);
+      }
+  }
+
+  // Penambahan Data ke MockApi
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errors = validasi(formValues);
     setFormError(errors)
-    
-    if(Object.keys(errors).length === 0){
-      const newItem = {id: uuidv4(),...formValues};
-      
-      setTableData([...tableData, newItem]);
-      dispatch(updateFormValue({name: '', value: ''}));
 
-      localStorage.setItem('tableData', JSON.stringify([...tableData, newItem]));
+    if(Object.keys(errors).length === 0){
+      const duplicate = tableData.some((item) => item.productname === formValues.productname);
+      if(duplicate){
+        alert('data sudah ada')
+
+      }else{
+        try{
+          const response = await axios.post('https://651ba6f4194f77f2a5aea95f.mockapi.io/Product', formValues)
+          if(response.status == 201){
+            alert('data sudah ditambahkan')
+            console.log(response);
+
+            // Setelah menambahkan data, ambil data terbaru dari server
+            getItems();
+          }
+        }catch(error){
+          console.log(error);
+        }
+      }
     }
   }
 
-  // Penghapusan Data dari Local Storage
-  const removeItemFromLocalStorage = (id) => {
-    const storedTableData = JSON.parse(localStorage.getItem('tableData'));
-    const updatedTableData = storedTableData.filter((item) => item.id !== id);
-    localStorage.setItem('tableData', JSON.stringify(updatedTableData));
-};
-
-
 // Penghapusan Data Perbaris
-  const handleDeleteItem = (id) => {
-    if (window.confirm('Apakah Anda yakin ingin menghapus item ini?')) {
-      const indexToRemove = tableData.filter((item) => item.id !== id);
-
-      if (indexToRemove !== -1) {
-        const updatedTableData = [...tableData];
-        updatedTableData.splice(indexToRemove, 1);
+  const handleDeleteItem = async (id) => {
+    if(window.confirm('Apakah Anda yakin ingin menghapus item ini?')){
+      try{
+        axios.delete(`https://651ba6f4194f77f2a5aea95f.mockapi.io/Product/${id}`);
+      
+        const updatedTableData = tableData.filter((item) => item.id !== id);
         setTableData(updatedTableData);
-        removeItemFromLocalStorage(id);
+        alert('data sudah dihapus')
+      
+      }catch(error){
+        console.log('Error:', error);
       }
     }
-  };
-
+  }
 
   // Validasi Inputan
   const validasi = (values) => {
@@ -166,7 +186,7 @@ const FormData = () => {
       </form>
 
       </div>
-            <Table data={tableData} onDelete={handleDeleteItem}/>
+            <Table data={tableData} onDelete={handleDeleteItem} />
       </>
     )
 }

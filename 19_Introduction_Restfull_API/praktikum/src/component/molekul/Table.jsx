@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Editing from "../atom/Modal";
 
 const Table = ({data, onDelete}) => {
     const noUrut = 1000
+
     return(
         <div className="col3 mt-4">
              <table className="table">
@@ -29,6 +31,7 @@ const Table = ({data, onDelete}) => {
                             <td>{item.productprice}</td>
                             <td>
                             <button className="btn btn-danger" style={{color:'black'}} onClick={() => onDelete(item.id)}>Hapus</button>
+                            <Editing buttonLeft="Kembali" buttonRight="Save" buttonShow="Edit" />
                             </td>
                             </tr>
                         ))}

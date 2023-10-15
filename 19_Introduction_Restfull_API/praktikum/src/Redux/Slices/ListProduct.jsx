@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const storedFormValues = JSON.parse(localStorage.getItem('tableData'));
-
 const ListProduct = createSlice({
   name: 'list',
   initialState: {
-    formValues: storedFormValues || {
+    formValues: {
       productname: '',
       productcategory: '',
       productfreshness: '',
